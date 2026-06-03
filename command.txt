@@ -1,0 +1,13 @@
+docker run --rm -p 4566:4566 floci/floci:latest
+
+// hold data
+docker run --rm -p 4566:4566 -e FLOCI_STORAGE_MODE=persistent -v "$(pwd)/floci-data:/app/data" floci/floci:latest
+
+//admin dashboard
+npm install -g dynamodb-admin
+DYNAMO_ENDPOINT=http://localhost:4566 dynamodb-admin
+http://localhost:8001
+
+
+// generate jwt
+openssl rand -hex 64
